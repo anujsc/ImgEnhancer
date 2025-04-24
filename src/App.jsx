@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Homw from "./components/Homw";
-import SignInSignUp from "./pages/SignInSignUp";
+import SignInSignUp from "./Pages/SignInSignUp";
 import { auth } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { signOut } from "firebase/auth";
