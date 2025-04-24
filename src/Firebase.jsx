@@ -9,7 +9,7 @@ const firebaseConfig = {
   storageBucket: "imgenhancement-17548.firebasestorage.app",
   messagingSenderId: "1069975614052",
   appId: "1:1069975614052:web:d27349056e7fc80ee3e571",
-  measurementId: "G-BPC4V3MQXV"
+  
 };
 
 
