@@ -12,7 +12,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // 🔄 Monitor Auth State
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
@@ -48,7 +48,7 @@ function App() {
   element={
     user ? (
       <div className="relative flex flex-col items-center justify-center min-h-screen bg-gray-100 py-8 px-4 sm:px-6 lg:px-8">
-        {/* 🔘 Logout Button */}
+        {/* /* Logout Button */ }
         <button
           onClick={() => signOut(auth)}
           className="absolute top-4 right-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"

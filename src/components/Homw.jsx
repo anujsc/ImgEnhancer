@@ -54,12 +54,6 @@ const Homw = () => {
 
       {/* 🔘 Buttons Section */}
       <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-8">
-        <button
-          onClick={handleRefresh}
-          className="px-6 py-3 font-semibold bg-blue-600 text-white rounded-2xl text-lg hover:bg-blue-800 transition duration-300 shadow-md"
-        >
-          Try Again !!
-        </button>
 
         {enhancedimg?.image && !loading && (
           <button

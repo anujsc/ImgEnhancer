@@ -6,6 +6,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
 
 const SignInSignUp = () => {
   const [email, setEmail] = useState("");
@@ -40,40 +41,57 @@ const SignInSignUp = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen px-4">
-      <h1 className="text-3xl font-bold mb-6">Sign In / Sign Up</h1>
-      <input
-        className="mb-2 p-2 border rounded w-72"
-        type="email"
-        placeholder="Email"
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        className="mb-4 p-2 border rounded w-72"
-        type="password"
-        placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <div className="flex gap-4 mb-4">
-        <button
-          onClick={signIn}
-          className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
-        >
-          Sign In
-        </button>
-        <button
-          onClick={signUp}
-          className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
-        >
-          Sign Up
-        </button>
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 px-4">
+      <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
+        <h2 className="text-3xl font-bold tracking-widest  text-center text-gray-800 mb-6">
+          Welcome to Img Enhancer
+        </h2>
+
+        <div className="space-y-4">
+          <input
+            type="email"
+            placeholder="Email"
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+
+        <div className="flex justify-between mt-6 space-x-4">
+          <button
+            onClick={signIn}
+            className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition"
+          >
+            Sign In
+          </button>
+          <button
+            onClick={signUp}
+            className="flex-1 bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg transition"
+          >
+            Sign Up
+          </button>
+        </div>
+
+        <div className="mt-6">
+          <div className="relative flex items-center justify-center">
+            <div className="absolute w-full border-t border-gray-300"></div>
+            <span className="bg-white px-2 text-sm text-gray-500 z-10">or</span>
+          </div>
+
+          <button
+            onClick={signInWithGoogle}
+            className="mt-4 w-full flex items-center justify-center gap-3 bg-white border border-gray-300 hover:shadow-md py-2 rounded-lg transition"
+          >
+            <FcGoogle size={24} />
+            <span className="text-gray-700 font-medium">Continue with Google</span>
+          </button>
+        </div>
       </div>
-      <button
-        onClick={signInWithGoogle}
-        className="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded"
-      >
-        Sign in with Google
-      </button>
     </div>
   );
 };
