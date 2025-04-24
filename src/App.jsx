@@ -61,7 +61,7 @@ function App() {
             AI Image Enhancer
           </h1>
           <p className="text-base sm:text-lg text-gray-500 max-w-md mx-auto">
-            Upload your image and let AI enhance it in seconds!
+            Upload your image and let AI enhance it in seconds
           </p>
         </div>
 
