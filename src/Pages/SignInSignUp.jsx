@@ -7,6 +7,7 @@ import {
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import toast from "react-hot-toast";
 
 const SignInSignUp = () => {
   const [email, setEmail] = useState("");
@@ -17,8 +18,9 @@ const SignInSignUp = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       navigate("/home");
+      toast.success("Logged in successfully! 🚀");
     } catch (error) {
-      alert("Sign in failed: " + error.message);
+      toast.error("Login failed! Please check your credentials.");
     }
   };
 
@@ -26,6 +28,7 @@ const SignInSignUp = () => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       navigate("/home");
+      toast.success("Account created successfully! 🎉");
     } catch (error) {
       alert("Sign up failed: " + error.message);
     }
@@ -35,8 +38,9 @@ const SignInSignUp = () => {
     try {
       await signInWithPopup(auth, googleProvider);
       navigate("/home");
+      toast.success("Logged in with Google! ✨");
     } catch (error) {
-      alert("Google sign-in failed: " + error.message);
+      toast.error("Google sign-in failed. Try again!");
     }
   };
 

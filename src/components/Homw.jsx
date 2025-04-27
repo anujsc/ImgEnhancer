@@ -45,7 +45,6 @@ const Homw = () => {
       setenhancedimg(enhancedURL);
       toast.success("Image enhanced successfully! 🎯");
     } catch (error) {
-      console.log(error);
       toast.error("Error while enhancing the image. Please try again later.");
     } finally {
       setUploading(false);
@@ -84,7 +83,7 @@ const Homw = () => {
             onClick={handleDownload}
             className="bg-green-600 text-white hover:bg-green-700 w-56"
           >
-            Download Enhanced Image
+            Download
           </Button>
         )}
 
