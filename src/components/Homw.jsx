@@ -3,19 +3,18 @@ import ImgPrev from "./ImgPrev";
 import ImgUpload from "./ImgUpload";
 import { enhancedImageAPI } from "../utilis/Api";
 import toast from "react-hot-toast";
-import Button from "../utilis/Button"
-
+import Button from "../utilis/Button";
 import Spinner from "../utilis/Spinner";
 
 const Homw = () => {
   const [uploadimg, setuploadimg] = useState(null);
   const [enhancedimg, setenhancedimg] = useState(null);
-  const [uploading, setUploading] = useState(false); // For uploading
-  const [downloading, setDownloading] = useState(false); // For downloading
+  const [uploading, setUploading] = useState(false);
+  const [downloading, setDownloading] = useState(false);
 
-  // const handleRefresh = () => {
-  //   window.location.reload();
-  // };
+  const handleRefresh = () => {
+    window.location.reload();
+  };
 
   const handleDownload = async () => {
     try {
@@ -30,7 +29,6 @@ const Homw = () => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(url);
-
       toast.success("Download completed successfully! 🎉");
     } catch (error) {
       toast.error("Download failed. Please try again!");
@@ -55,7 +53,7 @@ const Homw = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center px-4">
+    <div className="flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 lg:px-10 w-full">
 
       <ImgUpload uploadimgHanler={uploadimgHanler} />
 
@@ -70,13 +68,21 @@ const Homw = () => {
       )}
 
       {/* 🔘 Buttons Section */}
-      <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-8">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-8 w-full max-w-2xl">
 
-        {/* Download Button */}
+        {/* Try Again button (always visible) */}
+        {/* <Button
+          onClick={handleRefresh}
+          className="bg-red-500 text-white hover:bg-red-600 w-56"
+        >
+          Try Again
+        </Button> */}
+
+        {/* Download Button (after enhanced image ready) */}
         {enhancedimg?.image && !uploading && !downloading && (
           <Button
             onClick={handleDownload}
-            className="px-6 py-3 font-semibold bg-green-600 text-white rounded-2xl text-lg hover:bg-green-700 transition duration-300 shadow-md"
+            className="bg-green-600 text-white hover:bg-green-700 w-56"
           >
             Download Enhanced Image
           </Button>
@@ -84,7 +90,6 @@ const Homw = () => {
 
         {/* Spinner while downloading */}
         {downloading && <Spinner text="Preparing your download..." />}
-
       </div>
     </div>
   );
