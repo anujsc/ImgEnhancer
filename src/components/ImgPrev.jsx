@@ -28,15 +28,6 @@ const ImgPrev = ({ uploaded, enhanced, loading }) => {
         {enhanced && !loading && (
           <>
             <img src={enhanced} alt="" className="w-full h-full object-cover" />
-            <div className="flex justify-center my-4">
-              <a
-                href={enhanced}
-                download="enhanced-image.jpg"
-                className="px-6 py-2 bg-green-600 text-white rounded-xl hover:bg-green-700 transition-all duration-300"
-              >
-                Download Enhanced Image
-              </a>
-            </div>
           </>
         )}
 
