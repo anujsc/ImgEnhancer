@@ -14,7 +14,6 @@ import ThemeToggle from "./utilis/ThemeToggle";
 import { Toaster } from "react-hot-toast";
 import { IoIosLogOut } from "react-icons/io";
 
-
 function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -65,7 +64,6 @@ function App() {
       {/* toaster always will be near the router, NAhi toh nahi chalega re baba */}
 
       <Routes>
-      
         <Route
           path="/"
           element={user ? <Navigate to="/home" /> : <SignInSignUp />}
@@ -81,15 +79,20 @@ function App() {
                 </div>
 
                 {/* 🚪 Logout Button (Top Right) */}
-               
-                  <button
-                    onClick={() => signOut(auth)}
-                    className="absolute top-5 right-5 px-4 py-2 bg-gradient-to-tr from-blue-400 to-blue-600 hover:from-yellow-400 hover:to-yellow-600 text-white rounded-lg hover:scale-[110%] hover:text-[90%] shadow-lg transition-all"
-                  >
-                    Logout
-                  </button>
-                  
-             
+
+                <button
+                  onClick={() => signOut(auth)}
+                  className="absolute top-5 right-5 text-white rounded-lg shadow-lg transition-all bg-gradient-to-tr from-blue-400 to-blue-600 hover:from-yellow-400 hover:to-yellow-600 hover:scale-110 px-4 py-2 hidden sm:block"
+                >
+                  Logout
+                </button>
+
+                <button
+                  onClick={() => signOut(auth)}
+                  className="absolute top-5 right-5 p-2 rounded-full shadow-lg bg-blue-500 hover:bg-yellow-500 sm:hidden"
+                >
+                  <IoIosLogOut className="w-6 h-6 text-white" />
+                </button>
 
                 {/* 👋 Welcome Section */}
                 <div className="flex flex-col items-center mb-8">
