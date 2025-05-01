@@ -5,6 +5,8 @@ import { enhancedImageAPI } from "../utilis/Api";
 import toast from "react-hot-toast";
 import Button from "../utilis/Button";
 import Spinner from "../utilis/Spinner";
+import { Link } from "react-router-dom";
+
 
 const Homw = () => {
   const [uploadimg, setuploadimg] = useState(null);
@@ -42,8 +44,20 @@ const Homw = () => {
     setUploading(true);
     try {
       const enhancedURL = await enhancedImageAPI(file);
-      setenhancedimg(enhancedURL);
+      setenhancedimg(enhancedzURL);
       toast.success("Image enhanced successfully! 🎯");
+
+      // // 📂 Save to LocalStorage
+      // const existingImages =
+      //   JSON.parse(localStorage.getItem("enhancedImages")) || [];
+      // const newEntry = {
+      //   id: Date.now(),
+      //   image: enhancedURL.image,
+      // };
+      // localStorage.setItem(
+      //   "enhancedImages",
+      //   JSON.stringify([newEntry, ...existingImages])
+      // );
     } catch (error) {
       toast.error("Error while enhancing the image. Please try again later.");
     } finally {
@@ -53,7 +67,6 @@ const Homw = () => {
 
   return (
     <div className="flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 lg:px-10 w-full">
-
       <ImgUpload uploadimgHanler={uploadimgHanler} />
 
       {uploading ? (
@@ -68,7 +81,6 @@ const Homw = () => {
 
       {/* 🔘 Buttons Section */}
       <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-8 w-full max-w-2xl">
-
         {/* Try Again button (always visible) */}
         {/* <Button
           onClick={handleRefresh}
@@ -86,6 +98,12 @@ const Homw = () => {
             Download
           </Button>
         )}
+
+        {/* <Link to="/history">
+          <Button className="bg-blue-600 hover:bg-blue-700 mt-6">
+            View My History
+          </Button>
+        </Link> */}
 
         {/* Spinner while downloading */}
         {downloading && <Spinner text="Preparing your download..." />}

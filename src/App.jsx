@@ -11,6 +11,9 @@ import { auth } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { signOut } from "firebase/auth";
 import ThemeToggle from "./utilis/ThemeToggle";
+import { Toaster } from "react-hot-toast";
+import { IoIosLogOut } from "react-icons/io";
+
 
 function App() {
   const [user, setUser] = useState(null);
@@ -58,7 +61,11 @@ function App() {
 
   return (
     <Router>
+      <Toaster position="top-center" reverseOrder={false} />
+      {/* toaster always will be near the router, NAhi toh nahi chalega re baba */}
+
       <Routes>
+      
         <Route
           path="/"
           element={user ? <Navigate to="/home" /> : <SignInSignUp />}
@@ -67,30 +74,44 @@ function App() {
           path="/home"
           element={
             user ? (
-              <div className="relative flex flex-col items-center justify-center min-h-screen bg-gray-100 py-8 px-4 sm:px-6 lg:px-8 dark:bg-gray-900">
-                
-                <ThemeToggle />
-
-                {/* Logout Button */}
-                <button
-                  onClick={() => signOut(auth)}
-                  className="absolute font-semibold -tracking-tighter top-4 left-5 px-4 py-2 bg-gradient-to-tr from-blue-400 to-blue-600 hover:from-yellow-400 hover:to-yellow-600 text-white rounded-lg shadow-lg transition-all duration-500 hover:scale-105"
-                >
-                  Logout
-                </button>
-
-                <div className="text-center mb-8">
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-2">
-                    AI Image Enhancer
-                  </h1>
-                  <p className="text-base sm:text-lg text-gray-500 dark:text-gray-300 max-w-md mx-auto">
-                    Upload your image and let AI enhance it in seconds
-                  </p>
+              <div className="relative flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 py-8 px-4 sm:px-6 lg:px-8">
+                {/* 🌗 Theme Toggle Button (Top Left) */}
+                <div>
+                  <ThemeToggle />
                 </div>
 
+                {/* 🚪 Logout Button (Top Right) */}
+               
+                  <button
+                    onClick={() => signOut(auth)}
+                    className="absolute top-5 right-5 px-4 py-2 bg-gradient-to-tr from-blue-400 to-blue-600 hover:from-yellow-400 hover:to-yellow-600 text-white rounded-lg hover:scale-[110%] hover:text-[90%] shadow-lg transition-all"
+                  >
+                    Logout
+                  </button>
+                  
+             
+
+                {/* 👋 Welcome Section */}
+                <div className="flex flex-col items-center mb-8">
+                  {user.photoURL && (
+                    <img
+                      src={user.photoURL}
+                      alt="User Profile"
+                      className="w-20 h-20 rounded-full shadow-md mb-2 border-2 border-blue-500 dark:border-yellow-400"
+                    />
+                  )}
+                  <h2 className="flex items-center text-xl sm:text-3xl font-sans text-gray-800 dark:text-white">
+                    Welcome, {user.displayName || "Guest"}
+                    <span className="ml-2 animate-waving-hand text-2xl">
+                      👋
+                    </span>
+                  </h2>
+                </div>
+
+                {/* 🖼️ Main Home Content */}
                 <Homw />
 
-                <div className="text-xs sm:text-sm text-gray-500 mt-6 dark:text-gray-400">
+                <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-6">
                   Powered By <span className="font-semibold">@AnujAI</span>
                 </div>
               </div>
