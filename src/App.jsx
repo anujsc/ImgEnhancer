@@ -13,6 +13,7 @@ import { signOut } from "firebase/auth";
 import ThemeToggle from "./utilis/ThemeToggle";
 import { Toaster } from "react-hot-toast";
 import { IoIosLogOut } from "react-icons/io";
+import BackgroundRemover from "./components/BackgroundRemover"
 
 function App() {
   const [user, setUser] = useState(null);
@@ -68,6 +69,22 @@ function App() {
           path="/"
           element={user ? <Navigate to="/home" /> : <SignInSignUp />}
         />
+
+
+        <Route
+          path="/bg-remover"
+          element={
+            user ? (
+              <div className="your-wrapper-classes">
+                {/* Your top elements (ThemeToggle, Logout) */}
+                <BackgroundRemover />
+              </div>
+            ) : (
+              <Navigate to="/" />
+            )
+          }
+        />
+
         <Route
           path="/home"
           element={
