@@ -44,20 +44,8 @@ const Homw = () => {
     setUploading(true);
     try {
       const enhancedURL = await enhancedImageAPI(file);
-      setenhancedimg(enhancedzURL);
+      setenhancedimg(enhancedURL);
       toast.success("Image enhanced successfully! 🎯");
-
-      // // 📂 Save to LocalStorage
-      // const existingImages =
-      //   JSON.parse(localStorage.getItem("enhancedImages")) || [];
-      // const newEntry = {
-      //   id: Date.now(),
-      //   image: enhancedURL.image,
-      // };
-      // localStorage.setItem(
-      //   "enhancedImages",
-      //   JSON.stringify([newEntry, ...existingImages])
-      // );
     } catch (error) {
       toast.error("Error while enhancing the image. Please try again later.");
     } finally {
@@ -81,14 +69,7 @@ const Homw = () => {
 
       {/* 🔘 Buttons Section */}
       <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-8 w-full max-w-2xl">
-        {/* Try Again button (always visible) */}
-        {/* <Button
-          onClick={handleRefresh}
-          className="bg-red-500 text-white hover:bg-red-600 w-56"
-        >
-          Try Again
-        </Button> */}
-
+        
         {/* Download Button (after enhanced image ready) */}
         {enhancedimg?.image && !uploading && !downloading && (
           <Button
@@ -98,12 +79,6 @@ const Homw = () => {
             Download
           </Button>
         )}
-
-        {/* <Link to="/history">
-          <Button className="bg-blue-600 hover:bg-blue-700 mt-6">
-            View My History
-          </Button>
-        </Link> */}
 
         {/* Spinner while downloading */}
         {downloading && <Spinner text="Preparing your download..." />}
