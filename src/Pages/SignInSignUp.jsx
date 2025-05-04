@@ -17,7 +17,7 @@ const SignInSignUp = () => {
   const signIn = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/bg-remover");
+      navigate("/hero");
       toast.success("Logged in successfully! 🚀");
     } catch (error) {
       toast.error("Login failed! Please check your credentials.");
@@ -27,7 +27,7 @@ const SignInSignUp = () => {
   const signUp = async () => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      navigate("/bg-remover");
+      navigate("/hero");
       toast.success("Account created successfully! 🎉");
     } catch (error) {
       alert("Sign up failed: " + error.message);
@@ -37,7 +37,7 @@ const SignInSignUp = () => {
   const signInWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
-      navigate("/bg-remover");
+      navigate("/hero");
       toast.success("Logged in with Google! ✨");
     } catch (error) {
       toast.error("Google sign-in failed. Try again!");
