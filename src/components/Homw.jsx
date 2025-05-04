@@ -47,6 +47,7 @@ const Homw = () => {
       toast.error("Error while enhancing the image. Please try again later.");
     } finally {
       setUploading(false);
+      
     }
   };
 
