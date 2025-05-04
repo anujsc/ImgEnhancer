@@ -6,7 +6,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import Homw from "./components/Homw";
-import SignInSignUp from "./pages/SignInSignUp";
+import SignInSignUp from "./pages";
 import { auth } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { Toaster } from "react-hot-toast";
