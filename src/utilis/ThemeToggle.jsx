@@ -28,7 +28,7 @@ const ThemeToggle = () => {
   return (
     <motion.button
       onClick={toggleTheme}
-      className="absolute left-5 top-4 flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-tr from-blue-400 to-blue-600 dark:from-yellow-400 dark:to-yellow-600 shadow-lg hover:scale-110 transition-all"
+      className=" left-5 top-4 flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-tr from-blue-400 to-blue-600 dark:from-[#9333EA] dark:to-[#c14dd8] shadow-lg hover:scale-110 transition-all"
       whileTap={{ scale: 0.9 }}
       aria-label="Toggle Dark Mode"
     >

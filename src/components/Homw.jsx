@@ -5,13 +5,15 @@ import { enhancedImageAPI } from "../utilis/Api";
 import toast from "react-hot-toast";
 import Button from "../utilis/Button";
 import Spinner from "../utilis/Spinner";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Homw = () => {
   const [uploadimg, setuploadimg] = useState(null);
   const [enhancedimg, setenhancedimg] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [downloading, setDownloading] = useState(false);
+
+  const navg = useNavigate();
 
   const handleDownload = async () => {
     try {
@@ -50,14 +52,23 @@ const Homw = () => {
 
   return (
     <div className="flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 lg:px-10 w-full">
-      <ImgUpload uploadimgHanler={uploadimgHanler} />
+       <div className=" flex-col text-center mt-2 mb-6 w-full">
+        <div className=" flex sm:gap-5 justify-center">
+        <button onClick={() => navg(-1)} className=" sm:size-10 size-20">
+          <img src="public/images/arrow.png" alt="" />
+        </button>
+        <h1 className="text-3xl font-mono tracking-tighter sm:text-4xl font-bold text-gray-800 dark:text-white">
+          Enhance Your Image
+        </h1>
+        </div>
+        <hr className="h-[0.3vh] mt-4 bg-gray-200 border-0 dark:bg-gray-700"/>
+        <p className="mt-1 text-sm sm:text-base text-gray-500 dark:text-gray-300">
+          Upload your image and enhance your image instantly with one click.
+        </p>
+        <div className="mt-4 w-20 h-1 mx-auto bg-gradient-to-r from-blue-500 to-purple-600 rounded-full" />
+      </div>
       
-      <Link to="/home" className="btn">
-        Enhance
-      </Link>
-      <Link to="/bg-remover" className="btn">
-        Remove Background
-      </Link>
+      <ImgUpload uploadimgHanler={uploadimgHanler} />
 
       {uploading ? (
         <Spinner text="Enhancing your image..." />
@@ -66,6 +77,7 @@ const Homw = () => {
           loading={uploading}
           uploaded={uploadimg}
           enhanced={enhancedimg?.image}
+          bg={"Enhanced Image"}
         />
       )}
 
@@ -83,6 +95,9 @@ const Homw = () => {
 
         {/* Spinner while downloading */}
         {downloading && <Spinner text="Preparing your download..." />}
+      </div>
+      <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-6">
+        Powered By <span className="font-semibold">@AnujAI</span>
       </div>
     </div>
   );

@@ -15,7 +15,7 @@ const ImgUpload = ({ uploadimgHanler }) => {
   });
 
   return (
-    <div className="bg-white dark:bg-gray-900 shadow-xl rounded-2xl p-6 sm:p-8 w-[90%] max-w-2xl mx-auto">
+    <div className="bg-white dark:bg-gray-900 shadow-slate-600 dark:shadow-slate  shadow-2xl rounded-2xl p-6 sm:p-8 w-[90%] max-w-2xl mx-auto">
       <div
         {...getRootProps()}
         className={`cursor-pointer border-2 border-dashed rounded-xl p-8 text-center transition-all

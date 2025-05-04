@@ -6,14 +6,13 @@ import {
   Navigate,
 } from "react-router-dom";
 import Homw from "./components/Homw";
-import SignInSignUp from "./Pages/SignInSignUp";
+import SignInSignUp from "./pages/SignInSignUp";
 import { auth } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import { signOut } from "firebase/auth";
-import ThemeToggle from "./utilis/ThemeToggle";
 import { Toaster } from "react-hot-toast";
-import { IoIosLogOut } from "react-icons/io";
-import BackgroundRemover from "./components/BackgroundRemover"
+import BackgroundRemover from "./components/BackgroundRemover";
+import DashboardLayout from "./components/DashboardLayout";
+import Hero from "./components/Hero";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -22,23 +21,11 @@ function App() {
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      setTheme(savedTheme);
-    } else {
-      // Default to light theme
-      setTheme("light");
-    }
+    setTheme(savedTheme || "light");
   }, []);
 
   useEffect(() => {
-    // Apply the theme class to the body element
-    if (theme === "dark") {
-      document.body.classList.add("dark");
-    } else {
-      document.body.classList.remove("dark");
-    }
-
-    // Save the theme in localStorage
+    document.body.classList.toggle("dark", theme === "dark");
     localStorage.setItem("theme", theme);
   }, [theme]);
 
@@ -47,7 +34,6 @@ function App() {
       setUser(user);
       setLoading(false);
     });
-
     return () => unsubscribe();
   }, []);
 
@@ -62,84 +48,24 @@ function App() {
   return (
     <Router>
       <Toaster position="top-center" reverseOrder={false} />
-      {/* toaster always will be near the router, NAhi toh nahi chalega re baba */}
 
       <Routes>
         <Route
           path="/"
-          element={user ? <Navigate to="/home" /> : <SignInSignUp />}
+          element={user ? <Navigate to="/hero" /> : <SignInSignUp />}
         />
 
+        {/* Protected Dashboard Routes */}
+        {user && (
+          <Route element={<DashboardLayout user={user} />}>
+            <Route path="/hero" element={<Hero />} />
+            <Route path="/home" element={<Homw />} />
+            <Route path="/bg-remover" element={<BackgroundRemover />} />
+          </Route>
+        )}
 
-        <Route
-          path="/bg-remover"
-          element={
-            user ? (
-              <div className="your-wrapper-classes">
-                {/* Your top elements (ThemeToggle, Logout) */}
-                <BackgroundRemover />
-              </div>
-            ) : (
-              <Navigate to="/" />
-            )
-          }
-        />
-
-        <Route
-          path="/home"
-          element={
-            user ? (
-              <div className="relative flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 py-8 px-4 sm:px-6 lg:px-8">
-                {/* 🌗 Theme Toggle Button (Top Left) */}
-                <div>
-                  <ThemeToggle />
-                </div>
-
-                {/* 🚪 Logout Button (Top Right) */}
-
-                <button
-                  onClick={() => signOut(auth)}
-                  className="absolute top-5 right-5 text-white rounded-lg shadow-lg transition-all bg-gradient-to-tr from-blue-400 to-blue-600 hover:from-yellow-400 hover:to-yellow-600 hover:scale-110 px-4 py-2 hidden sm:block"
-                >
-                  Logout
-                </button>
-
-                <button
-                  onClick={() => signOut(auth)}
-                  className="absolute top-5 right-5 p-2 rounded-full shadow-lg bg-blue-500 hover:bg-yellow-500 sm:hidden"
-                >
-                  <IoIosLogOut className="w-6 h-6 text-white" />
-                </button>
-
-                {/* 👋 Welcome Section */}
-                <div className="flex flex-col items-center mb-8">
-                  {user.photoURL && (
-                    <img
-                      src={user.photoURL}
-                      alt="User Profile"
-                      className="w-20 h-20 rounded-full shadow-md mb-2 border-2 border-blue-500 dark:border-yellow-400"
-                    />
-                  )}
-                  <h2 className="flex items-center text-xl sm:text-3xl font-sans text-gray-800 dark:text-white">
-                    Welcome, {user.displayName || "Guest"}
-                    <span className="ml-2 animate-waving-hand text-2xl">
-                      👋
-                    </span>
-                  </h2>
-                </div>
-
-                {/* 🖼️ Main Home Content */}
-                <Homw />
-
-                <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-6">
-                  Powered By <span className="font-semibold">@AnujAI</span>
-                </div>
-              </div>
-            ) : (
-              <Navigate to="/" />
-            )
-          }
-        />
+        {/* Redirect unknown paths */}
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
   );

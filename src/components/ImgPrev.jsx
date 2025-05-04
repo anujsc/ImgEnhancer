@@ -1,12 +1,12 @@
 import React from "react";
 import Loader from "./Loader";
 
-const ImgPrev = ({ uploaded, enhanced, loading }) => {
+const ImgPrev = ({ uploaded, enhanced, loading,bg }) => {
   return (
     <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
       {/* Original Image */}
       <div className="bg-white shadow-lg rounded-xl overflow-hidden">
-        <h2 className="text-xl font-semibold text-center bg-gray-800 text-white py-2">
+        <h2 className="text-xl font-semibold text-center bg-blue-700 text-white py-2">
           Original Image
         </h2>
 
@@ -21,8 +21,8 @@ const ImgPrev = ({ uploaded, enhanced, loading }) => {
 
       {/* Enhanced Image Image */}
       <div className="bg-white shadow-lg rounded-xl overflow-hidden">
-        <h2 className="text-xl font-semibold text-center bg-blue-800 text-white py-2">
-          Enhanced Image
+        <h2 className="text-xl font-semibold text-center bg-purple-600 text-white py-2">
+          {bg}
         </h2>
 
         {enhanced && !loading && (
