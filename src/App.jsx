@@ -8,11 +8,12 @@ import {
 import { auth } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { Toaster } from "react-hot-toast";
+import DashboardLayout from "./components/DashboardLayout";
 
 // Lazy-loaded components
 const Home = lazy(() => import("./components/Homw"));
 const BackgroundRemover = lazy(() => import("./components/BackgroundRemover"));
-const DashboardLayout = lazy(() => import("./components/DashboardLayout"));
+// const DashboardLayout = lazy(() => import("./components/DashboardLayout"));
 const Hero = lazy(() => import("./components/Hero"));
 const SignInSignUp = lazy(() => import("./components/SignInSignUp"));
 
