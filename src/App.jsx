@@ -9,6 +9,8 @@ import { auth } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { Toaster } from "react-hot-toast";
 import DashboardLayout from "./utilis/DashboardLayout";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import Homw from "./components/Homw";
 
 // Lazy-loaded components
 const Home = lazy(() => import("./components/Homw"));
@@ -43,7 +45,11 @@ function App() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen text-xl text-gray-600">
-        Loading...
+        <DotLottieReact
+          src="https://lottie.host/edd8059f-0aa3-4fa2-9b1d-88489b557243/WExVpP20xC.lottie"
+          loop
+          autoplay
+        />
       </div>
     );
   }
@@ -55,7 +61,11 @@ function App() {
       <Suspense
         fallback={
           <div className="flex items-center justify-center min-h-screen text-xl text-gray-600">
-            Loading...
+            <DotLottieReact
+          src="https://lottie.host/edd8059f-0aa3-4fa2-9b1d-88489b557243/WExVpP20xC.lottie"
+          loop
+          autoplay
+        />
           </div>
         }
       >

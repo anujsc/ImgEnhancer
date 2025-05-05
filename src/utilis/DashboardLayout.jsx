@@ -2,7 +2,7 @@ import React from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
-import ThemeToggle from "./ThemeToggle";
+import ThemeToggle from "../utilis/ThemeToggle";
 import { IoIosLogOut } from "react-icons/io";
 
 const DashboardLayout = () => {
