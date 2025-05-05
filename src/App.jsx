@@ -6,13 +6,13 @@ import {
   Navigate,
 } from "react-router-dom";
 import Homw from "./components/Homw";
-import SignInSignUp from "src/pages/SignInSignUp.jsx";
 import { auth } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { Toaster } from "react-hot-toast";
 import BackgroundRemover from "./components/BackgroundRemover";
 import DashboardLayout from "./components/DashboardLayout";
 import Hero from "./components/Hero";
+import SignInSignUp from "./components/SignInSignUp";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -52,7 +52,7 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={user ? <Navigate to="/hero" /> : <SignInSignUp />}
+          element={user ? <Navigate to="/hero" /> : <SignInSignUp/>}
         />
 
         {/* Protected Dashboard Routes */}
