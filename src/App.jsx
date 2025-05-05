@@ -8,7 +8,7 @@ import {
 import { auth } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { Toaster } from "react-hot-toast";
-import DashboardLayout from "./utilis/DashboardLayout";
+import DashboardLayout from "./components/DashboardLayout";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import Homw from "./components/Homw";
 
