@@ -83,7 +83,7 @@ const Homw = () => {
       )}
 
       {/* 🔘 Buttons Section */}
-      <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-8 w-full max-w-2xl">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-2 w-full max-w-2xl">
         {/* Download Button (after enhanced image ready) */}
         {enhancedimg?.image && !uploading && !downloading && (
           <Button

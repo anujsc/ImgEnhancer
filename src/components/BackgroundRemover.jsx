@@ -92,6 +92,10 @@ const BackgroundRemover = () => {
         </Button>
       )}
       {downloading && <Spinner text="Preparing your download..." />}
+
+      <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-6">
+        Powered By <span className="font-semibold">@AnujAI</span>
+      </div>
     </div>
   );
 };

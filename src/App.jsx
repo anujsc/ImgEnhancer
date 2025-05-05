@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
 } from "react-router-dom";
-import Homw from "./components/Homw";
 import { auth } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { Toaster } from "react-hot-toast";
-import BackgroundRemover from "./components/BackgroundRemover";
-import DashboardLayout from "./components/DashboardLayout";
-import Hero from "./components/Hero";
-import SignInSignUp from "./components/SignInSignUp";
+
+// Lazy-loaded components
+const Home = lazy(() => import("./components/Homw"));
+const BackgroundRemover = lazy(() => import("./components/BackgroundRemover"));
+const DashboardLayout = lazy(() => import("./components/DashboardLayout"));
+const Hero = lazy(() => import("./components/Hero"));
+const SignInSignUp = lazy(() => import("./components/SignInSignUp"));
 
 function App() {
   const [user, setUser] = useState(null);
@@ -49,24 +51,30 @@ function App() {
     <Router>
       <Toaster position="top-center" reverseOrder={false} />
 
-      <Routes>
-        <Route
-          path="/"
-          element={user ? <Navigate to="/hero" /> : <SignInSignUp/>}
-        />
+      <Suspense
+        fallback={
+          <div className="flex items-center justify-center min-h-screen text-xl text-gray-600">
+            Loading...
+          </div>
+        }
+      >
+        <Routes>
+          <Route
+            path="/"
+            element={user ? <Navigate to="/hero" /> : <SignInSignUp />}
+          />
 
-        {/* Protected Dashboard Routes */}
-        {user && (
-          <Route element={<DashboardLayout user={user} />}>
-            <Route path="/hero" element={<Hero />} />
-            <Route path="/home" element={<Homw />} />
-            <Route path="/bg-remover" element={<BackgroundRemover />} />
-          </Route>
-        )}
+          {user && (
+            <Route element={<DashboardLayout user={user} />}>
+              <Route path="/hero" element={<Hero />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/bg-remover" element={<BackgroundRemover />} />
+            </Route>
+          )}
 
-        {/* Redirect unknown paths */}
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </Suspense>
     </Router>
   );
 }
