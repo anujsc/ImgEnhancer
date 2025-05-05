@@ -57,7 +57,7 @@ const BackgroundRemover = () => {
       <div className=" flex-col text-center mt-2 mb-6 w-full">
         <div className=" flex sm:gap-5 justify-center">
         <button onClick={() => navg(-1)} className=" sm:size-10 size-20">
-          <img src="public/images/arrow.png" alt="" />
+          <img src="/images/arrow.png" alt="" />
         </button>
         <h1 className="text-3xl font-mono tracking-tighter sm:text-4xl font-bold text-gray-800 dark:text-white">
           Background Remover

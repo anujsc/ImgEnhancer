@@ -38,7 +38,7 @@ const DashboardLayout = () => {
             <ThemeToggle />
             <button
               onClick={handleLogout}
-              className="p-[2vh] bg-[#9333EA] hover:bg-[#b645cd] rounded-full text-white hover:scale-[110%] transition-all"
+              className="p-[1.6vh] bg-[#9333EA] hover:bg-[#b645cd] rounded-full text-white hover:scale-[110%] transition-all"
               title="Logout"
             >
               <IoIosLogOut size={24} />
