@@ -12,7 +12,7 @@ import { Toaster } from "react-hot-toast";
 // Lazy-loaded components
 const Home = lazy(() => import("./components/Homw"));
 const BackgroundRemover = lazy(() => import("./components/BackgroundRemover"));
-const DashboardLayout = lazy(() => import("./components/DashboardLayout"));
+const DashboardLayout = lazy(() => import("./utilis/DashboardLayout"));
 const Hero = lazy(() => import("./components/Hero"));
 const SignInSignUp = lazy(() => import("./components/SignInSignUp"));
 
