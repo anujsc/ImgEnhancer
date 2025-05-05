@@ -4,9 +4,8 @@ import viteCompression from 'vite-plugin-compression';
 import { imagetools } from 'vite-imagetools';
 
 export default defineConfig({
-  plugins: [viteCompression(), imagetools()],
-  plugins: [viteCompression()],
-  plugins: [react()],
+  plugins: [viteCompression(),react(), imagetools(),],
+
   build: {
     minify: 'terser',
     terserOptions: {
