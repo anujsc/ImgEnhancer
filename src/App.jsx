@@ -9,6 +9,7 @@ import { auth } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { Toaster } from "react-hot-toast";
 import Homw from "./components/Homw";
+import DashboardLayout from "./components/DashboardLayout";
 
 // Lazy-loaded components
 const Home = lazy(() => import("./components/Homw"));
