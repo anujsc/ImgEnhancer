@@ -5,7 +5,7 @@ import { enhancedImageAPI } from "../utilis/Api";
 import toast from "react-hot-toast";
 import Button from "../utilis/Button";
 import Spinner from "../utilis/Spinner";
-import { Link, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 
 const Homw = () => {
   const [uploadimg, setuploadimg] = useState(null);
