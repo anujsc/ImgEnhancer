@@ -44,12 +44,14 @@ function App() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen text-xl text-gray-600">
+      <div className="flex flex-col items-center justify-center min-h-screen text-xl text-gray-600">
         <DotLottieReact
+        className=" size-[80%]"
           src="https://lottie.host/edd8059f-0aa3-4fa2-9b1d-88489b557243/WExVpP20xC.lottie"
           loop
           autoplay
         />
+        <h1>Loading...</h1>
       </div>
     );
   }
