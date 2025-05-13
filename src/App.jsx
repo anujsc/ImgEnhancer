@@ -8,16 +8,13 @@ import {
 import { auth } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { Toaster } from "react-hot-toast";
-import DashB from "./components/DashB";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import Homw from "./components/Homw";
-import Hero from "./components/Hero";
-import BackgroundRemover from "./components/BackgroundRemover";
-import SignInSignUp from "./components/SignInSignUp";
-
 
 // Lazy-loaded components
-
+const Home = lazy(() => import("./components/Homw"));
+const BackgroundRemover = lazy(() => import("./components/BackgroundRemover"));
+const DashboardLayout = lazy(() => import("./components/DashboardLayout"));
+const Hero = lazy(() => import("./components/Hero"));
+const SignInSignUp = lazy(() => import("./components/SignInSignUp"));
 
 function App() {
   const [user, setUser] = useState(null);
@@ -45,11 +42,7 @@ function App() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen text-xl text-gray-600">
-        <DotLottieReact
-          src="https://lottie.host/edd8059f-0aa3-4fa2-9b1d-88489b557243/WExVpP20xC.lottie"
-          loop
-          autoplay
-        />
+        Loading...
       </div>
     );
   }
@@ -61,11 +54,7 @@ function App() {
       <Suspense
         fallback={
           <div className="flex items-center justify-center min-h-screen text-xl text-gray-600">
-            <DotLottieReact
-          src="https://lottie.host/edd8059f-0aa3-4fa2-9b1d-88489b557243/WExVpP20xC.lottie"
-          loop
-          autoplay
-        />
+            Loading...
           </div>
         }
       >
@@ -76,9 +65,9 @@ function App() {
           />
 
           {user && (
-            <Route element={<DashB user={user} />}>
+            <Route element={<DashboardLayout user={user} />}>
               <Route path="/hero" element={<Hero />} />
-              <Route path="/home" element={<Homw />} />
+              <Route path="/home" element={<Home />} />
               <Route path="/bg-remover" element={<BackgroundRemover />} />
             </Route>
           )}

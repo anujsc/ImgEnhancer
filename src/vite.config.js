@@ -4,8 +4,9 @@ import viteCompression from 'vite-plugin-compression';
 import { imagetools } from 'vite-imagetools';
 
 export default defineConfig({
-  plugins: [viteCompression(),react(), imagetools(),],
-
+  plugins: [viteCompression(), imagetools()],
+  plugins: [viteCompression()],
+  plugins: [react()],
   build: {
     minify: 'terser',
     terserOptions: {
@@ -17,7 +18,7 @@ export default defineConfig({
         manualChunks: {
           react: ['react', 'react-dom'],
           firebase: ['firebase/app', 'firebase/auth'],
-          ui: ['./components/DashB', './components/Hero'],
+          ui: ['./components/DashboardLayout', './components/Hero'],
         }
       },
 
