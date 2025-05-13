@@ -8,11 +8,13 @@ import {
 import { auth } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { Toaster } from "react-hot-toast";
-import DashboardLayout from "./components/DashboardLayout";
+import DashB from "./components/DashB";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import Homw from "./components/Homw";
 import Hero from "./components/Hero";
 import BackgroundRemover from "./components/BackgroundRemover";
+import SignInSignUp from "./components/SignInSignUp";
+
 
 // Lazy-loaded components
 
@@ -74,7 +76,7 @@ function App() {
           />
 
           {user && (
-            <Route element={<DashboardLayout user={user} />}>
+            <Route element={<DashB user={user} />}>
               <Route path="/hero" element={<Hero />} />
               <Route path="/home" element={<Homw />} />
               <Route path="/bg-remover" element={<BackgroundRemover />} />
