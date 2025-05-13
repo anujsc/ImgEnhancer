@@ -17,7 +17,7 @@ export default defineConfig({
         manualChunks: {
           react: ['react', 'react-dom'],
           firebase: ['firebase/app', 'firebase/auth'],
-          ui: ['./components/DashboardLayout', './components/Hero'],
+          ui: ['./components/DashB', './components/Hero'],
         }
       },
 
