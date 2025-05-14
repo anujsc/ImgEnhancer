@@ -7,7 +7,7 @@ Here's a complete `README.md` file for your Img Enhancer project based on everyt
 
 A React-based web app for enhancing images and removing backgrounds using external APIs. Built with the MERN stack, Firebase authentication, Vite for blazing-fast builds, TailwindCSS, and various performance optimizations.
 
-live link: img-enhancer.netlify.app
+live link: (https://img-enhancer.netlify.app/)
 
 ---
 
